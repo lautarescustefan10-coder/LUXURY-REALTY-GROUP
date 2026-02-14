@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Developments - Real Estate Filter Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">RE</div>
+                    <div class="logo-text">
+                        <span class="main">LUXURY REALTY GROUP</span>
+                        <span class="sub">REAL ESTATE REDEFINED</span>
+                    </div>
+                </div>
+                <button class="hamburger" id="menuToggle" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dim Backdrop -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+
+    <!-- Floating Sidebar Menu -->
+    <div class="menu-sidebar" id="menuSidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close menu"></button>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="sidebar-link">HOME</a>
+            <a href="about.html" class="sidebar-link">ABOUT US</a>
+            <a href="rentals.html" class="sidebar-link active">RENTAL DEVELOPMENTS</a>
+            <a href="index.html#contact" class="sidebar-link">CONTACT US</a>
+        </nav>
+    </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>RENTAL DEVELOPMENTS</h1>
+        </div>
+
+        <div class="container">
+            <!-- FILTER BAR - NEW FEATURE -->
+            <div class="filter-bar">
+                <h3>Filter Properties</h3>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="neighbourhood">Neighbourhood</label>
+                        <select id="neighbourhood">
+                            <option value="">All Neighbourhoods</option>
+                            <option value="westmount">Westmount</option>
+                            <option value="downtown">Downtown Montreal</option>
+                            <option value="plateau">Plateau</option>
+                            <option value="brossard">Brossard</option>
+                            <option value="ndg">Notre-Dame-de-Grâce</option>
+                            <option value="hampstead">Hampstead</option>
+                            <option value="cote-des-neiges">Côte-des-Neiges</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="bedrooms">Bedrooms</label>
+                        <select id="bedrooms">
+                            <option value="">Any</option>
+                            <option value="0">Studio</option>
+                            <option value="1">1 Bedroom</option>
+                            <option value="2">2 Bedrooms</option>
+                            <option value="3">3+ Bedrooms</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="rent">Monthly Rent</label>
+                        <select id="rent">
+                            <option value="">Any Price</option>
+                            <option value="0-1500">Under $1,500</option>
+                            <option value="1500-2000">$1,500 - $2,000</option>
+                            <option value="2000-2500">$2,000 - $2,500</option>
+                            <option value="2500-3000">$2,500 - $3,000</option>
+                            <option value="3000-99999">$3,000+</option>
+                        </select>
+                    </div>
+
+                    <button class="reset-btn" onclick="resetFilters()">Reset Filters</button>
+                </div>
+                <div class="results-count">
+                    Showing <span id="count">17</span> properties
+                </div>
+            </div>
+
+            <!-- PROPERTIES GRID -->
+            <div class="properties-grid" id="propertiesGrid">
+                
+                <!-- NEW PROPERTY - THE SETAI ST MAARTEN -->
+                <div class="property-card" data-neighbourhood="saint-martin" data-bedrooms="1" data-min-rent="2000" data-max-rent="5000">
+                    <a href="setai-st-maarten.html">
+                        <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop');">
+                            <span class="badge new-badge">RENTAL DEVELOPMENT</span>
+                        </div>
+                        <div class="property-info">
+                            <h3>THE SETAI ST MAARTEN</h3>
+                            <p class="location">Saint Martin</p>
+                            <p class="centris">Centris ID: NEW2024</p>
+                            <p class="price">$2,000-$5,000</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Existing Properties -->
+                <div class="property-card" data-neighbourhood="ndg" data-bedrooms="0" data-min-rent="1400" data-max-rent="2955">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>5881 Monkland</h3>
+                        <p class="location">Notre-Dame-de-Grâce</p>
+                        <p class="centris">Centris ID: 14594987</p>
+                        <p class="price">$1,400-$2,955</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="westmount" data-bedrooms="0" data-min-rent="1500" data-max-rent="2500">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>2054 Av. Claremont</h3>
+                        <p class="location">Westmount</p>
+                        <p class="centris">Centris ID: 17070604</p>
+                        <p class="price">$1,500-$2,500</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="brossard" data-bedrooms="0" data-min-rent="1500" data-max-rent="3800">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1515263487990-61b07816b324?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>8405 Rue St-Charles</h3>
+                        <p class="location">Brossard</p>
+                        <p class="centris">Centris ID: 17466218</p>
+                        <p class="price">$1,500-$3,800</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="downtown" data-bedrooms="0" data-min-rent="1500" data-max-rent="3500">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>170 Boul. René-Lévesque O</h3>
+                        <p class="location">Downtown Montreal</p>
+                        <p class="centris">Centris ID: 21785371</p>
+                        <p class="price">$1,500-$3,500</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="cote-des-neiges" data-bedrooms="3" data-min-rent="3350" data-max-rent="3350">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>3201 Édouard-Montpetit #201</h3>
+                        <p class="location">Côte-des-Neiges</p>
+                        <p class="centris">Centris ID: 18464610</p>
+                        <p class="price">$3,350</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="westmount" data-bedrooms="0" data-min-rent="1800" data-max-rent="3800">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>4845 Côte Saint Luc Road</h3>
+                        <p class="location">Westmount</p>
+                        <p class="centris">Centris ID: 12727764</p>
+                        <p class="price">$1,800-$3,800/Month</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="cote-des-neiges" data-bedrooms="0" data-min-rent="1500" data-max-rent="3000">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>4982 Place de la Savane</h3>
+                        <p class="location">Côte des Neiges</p>
+                        <p class="centris">Centris ID: 18507691</p>
+                        <p class="price">$1,500-$3,000</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="westmount" data-bedrooms="0" data-min-rent="1500" data-max-rent="3200">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>418 Av. Claremont</h3>
+                        <p class="location">Westmount</p>
+                        <p class="centris">Centris ID: 11913547</p>
+                        <p class="price">$1,500-$3,200</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="plateau" data-bedrooms="0" data-min-rent="1500" data-max-rent="3000">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>3518 Rue Durocher</h3>
+                        <p class="location">Plateau, Downtown</p>
+                        <p class="centris">Centris ID: 18785445</p>
+                        <p class="price">$1,500-$3,000</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="plateau" data-bedrooms="0" data-min-rent="1250" data-max-rent="3000">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>235 Rue Sherbrooke O</h3>
+                        <p class="location">Plateau</p>
+                        <p class="centris">Centris ID: 22613062</p>
+                        <p class="price">$1,250-$3,000/Month</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="hampstead" data-bedrooms="0" data-min-rent="1500" data-max-rent="3800">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>5120 Av. Earnscliffe</h3>
+                        <p class="location">Hampstead / NDG</p>
+                        <p class="centris">Centris ID: 17851006</p>
+                        <p class="price">$1,500-$3,800/Month</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="plateau" data-bedrooms="1" data-min-rent="1749" data-max-rent="2299">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600566753051-e46a67a03f69?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>1101 Rue Rachel E</h3>
+                        <p class="location">Plateau</p>
+                        <p class="centris">Centris ID: 17365665</p>
+                        <p class="price">$1,749-$2,299</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="hampstead" data-bedrooms="0" data-min-rent="1300" data-max-rent="3000">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>4875 Rue Dufferin</h3>
+                        <p class="location">Hampstead</p>
+                        <p class="centris">Centris ID: 18313623</p>
+                        <p class="price">$1,300-$3,000</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="downtown" data-bedrooms="0" data-min-rent="1250" data-max-rent="2000">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>1025 Rue Sherbrooke E</h3>
+                        <p class="location">Downtown Montreal</p>
+                        <p class="centris">Centris ID: 15763519</p>
+                        <p class="price">$1,250-$2,000</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="cote-des-neiges" data-bedrooms="0" data-min-rent="1400" data-max-rent="2500">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>6500 Décarie</h3>
+                        <p class="location">Côte Des Neiges</p>
+                        <p class="centris">Centris ID: 22616682</p>
+                        <p class="price">$1,400-$2,500</p>
+                    </div>
+                </div>
+
+                <div class="property-card" data-neighbourhood="westmount" data-bedrooms="0" data-min-rent="1600" data-max-rent="3400">
+                    <div class="property-image" style="background-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=600&h=400&fit=crop');">
+                        <span class="badge">RENTAL DEVELOPMENT</span>
+                    </div>
+                    <div class="property-info">
+                        <h3>5200 Rue de la Savane</h3>
+                        <p class="location">TMR</p>
+                        <p class="centris">Centris ID: 24353514</p>
+                        <p class="price">$1,600-$3,400</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>No properties match your filters</h3>
+                <p>Try adjusting your search criteria</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Portfolio Demo by Stefan</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="menu.js"></script>
+</body>
+</html>
